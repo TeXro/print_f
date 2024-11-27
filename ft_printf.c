@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:21:27 by zzin              #+#    #+#             */
-/*   Updated: 2024/11/25 18:47:08 by zzin             ###   ########.fr       */
+/*   Updated: 2024/11/25 19:07:30 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static int	data_type(char c, va_list args)
 {
+	if (c == '%')
+		return (ft_putchar('%'));
 	if (c == 'c')
 		return (ft_putchar(va_arg(args, int)));
 	else if (c == 'd')
