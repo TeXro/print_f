@@ -12,31 +12,31 @@
 
 #include "libftprintf.h"
 
-int	ft_puthex(unsigned int decimal, int up)
+int	ft_putaddress(unsigned long int decimal)
 {
-	char		hex[16];
-	char		*hexpdigits;
-	int			i;
+	char		address[16];
+	char		*hexdigits;
 	char		buffer[16];
+	int			i;
 	int			index;
 
 	i = 0;
 	index = 0;
-	hexpdigits = "0123456789abcdef";
-	if (up == 1)
-		hexpdigits = "0123456789ABCDEF";
+	hexdigits = "0123456789abcdef";
 	if (decimal == 0)
-		return (write(1, "0", 1));
+		return (ft_putstr("(nil)"));
 	while (decimal > 0)
 	{
-		buffer[index++] = hexpdigits[decimal % 16];
+		buffer[index++] = hexdigits[decimal % 16];
 		decimal /= 16;
 	}
+	address[0] = '0';
+	address[1] = 'x';
 	while (i < index)
 	{
-		hex[i] = buffer[index - 1 - i];
+		address[2 + i] = buffer[index - 1 - i];
 		i++;
 	}
-	hex[2 + index] = '\0';
-	return (ft_putstr(hex));
+	address[2 + index] = '\0';
+	return (ft_putstr(address));
 }
