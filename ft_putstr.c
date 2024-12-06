@@ -10,16 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putstr(char *s)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
-	if (!s)
-		return (0);
-	len = ft_strlen(s);
-	write(1, s, len);
+	if (s == NULL)
+		return (ft_putstr("(null)"));
+	while (s[len] != '\0')
+	{
+		write(1, &s[len], 1);
+		len++;
+	}
 	return (len);
 }

@@ -10,33 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	ft_putaddress(unsigned long int decimal)
+int	ft_putaddress(unsigned long int adds)
 {
-	char		address[16];
-	char		*hexdigits;
-	char		buffer[16];
-	int			i;
-	int			index;
+	int	len;
 
-	i = 0;
-	index = 0;
-	hexdigits = "0123456789abcdef";
-	if (decimal == 0)
+	len = 0;
+	if (adds == 0)
 		return (ft_putstr("(nil)"));
-	while (decimal > 0)
-	{
-		buffer[index++] = hexdigits[decimal % 16];
-		decimal /= 16;
-	}
-	address[0] = '0';
-	address[1] = 'x';
-	while (i < index)
-	{
-		address[2 + i] = buffer[index - 1 - i];
-		i++;
-	}
-	address[2 + index] = '\0';
-	return (ft_putstr(address));
+	len += ft_putstr("0x");
+	len += ft_puthex(adds, "0123456789abcdef");
+	return (len);
 }

@@ -6,15 +6,15 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 12:27:36 by zzin              #+#    #+#             */
-/*   Updated: 2024/11/28 17:41:58 by zzin             ###   ########.fr       */
+/*   Updated: 2024/11/30 15:09:59 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	len(unsigned int n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (n > 0)

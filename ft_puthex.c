@@ -10,33 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	ft_puthex(unsigned int decimal, int up)
+int	ft_puthex(unsigned long int n, char	*hexs)
 {
-	char		hex[16];
-	char		*hexpdigits;
-	int			i;
-	char		buffer[16];
-	int			index;
+	char	buffer[16];
+	int		i;
+	int		count;
 
-	i = 0;
-	index = 0;
-	hexpdigits = "0123456789abcdef";
-	if (up == 1)
-		hexpdigits = "0123456789ABCDEF";
-	if (decimal == 0)
+	if (n == 0)
 		return (write(1, "0", 1));
-	while (decimal > 0)
+	i = 0;
+	while (n > 0)
 	{
-		buffer[index++] = hexpdigits[decimal % 16];
-		decimal /= 16;
+		buffer[i++] = hexs[n % 16];
+		n /= 16;
 	}
-	while (i < index)
-	{
-		hex[i] = buffer[index - 1 - i];
-		i++;
-	}
-	hex[2 + index] = '\0';
-	return (ft_putstr(hex));
+	count = i;
+	while (i > 0)
+		ft_putchar(buffer[--i]);
+	return (count);
 }

@@ -4,30 +4,22 @@ SRC = data_type.c ft_printf.c ft_putnbr.c ft_putstr.c \
 	  ft_strlen.c ft_putunsigned.c
 OBJ = ${SRC:.c=.o}
 CFLAGS = -Wall -Werror -Wextra
-va = valgrind --leak-check=full --show-leak-kinds=all
 NAME = libftprintf.a
 
-# co : all
-# 	@clear && cc -g main.c libftprintf.a -o zz && $(va) ./zz && rm -rf zz
+all : $(NAME)
 
-co : all
-	@clear && cc $(CFLAGS) main.c libftprintf.a && ./a.out && rm -rf a.out && rm -rf libftprintf.a
-	
-all : $(NAME) clean
-
-re : fclean all
-
-$(NAME) : $(OBJ) 
+$(NAME) : $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
 
 %.o : %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
-	@rm -f $(OBJ)
+	@rm -rf $(OBJ)
 
 fclean : clean
-	@rm -f $(NAME)
+	@rm -rf $(NAME)
 
+re : fclean all
 
-.PHONY: all re clean fclean
+.PHONY : all clean fclean

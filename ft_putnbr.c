@@ -10,18 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-static int	len(unsigned int n)
+static int	leen(int n)
 {
-	int	i;
+	int				i;
+	unsigned int	uni;
 
 	i = 0;
-	if (n == 0)
-		return (1);
-	while (n > 0)
+	if (n < 0)
 	{
-		n /= 10;
+		uni = -n;
+		i++;
+	}
+	else
+		uni = n;
+	while (uni > 0)
+	{
+		uni /= 10;
 		i++;
 	}
 	return (i);
@@ -29,24 +35,25 @@ static int	len(unsigned int n)
 
 int	ft_putnbr(int n)
 {
-	int	numlen;
+	unsigned int	uni;
+	int				numlen;
 
-	numlen = len(n);
-	if (n == -2147483648)
-	{
-		ft_putchar('-');
-		ft_putchar('2');
-		n = 147483648;
-	}
 	if (n < 0)
 	{
 		ft_putchar('-');
-		n = -n;
+		uni = -n;
 	}
-	if (n > 9)
+	else if (n == 0)
+		return (write(1, "0", 1));
+	else
+		uni = n;
+	numlen = leen(n);
+	if (uni > 9)
 	{
-		ft_putnbr(n / 10);
+		ft_putnbr(uni / 10);
+		ft_putchar((uni % 10) + '0');
 	}
-	ft_putchar((n % 10) + '0');
+	else
+		ft_putchar(uni + '0');
 	return (numlen);
 }

@@ -6,11 +6,11 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 15:29:07 by zzin              #+#    #+#             */
-/*   Updated: 2024/11/22 13:44:24 by zzin             ###   ########.fr       */
+/*   Updated: 2024/11/30 15:10:01 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 size_t	ft_strlen(const char *s)
 {
